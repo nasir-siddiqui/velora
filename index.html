@@ -397,21 +397,119 @@ footer{padding:55px 0 25px;border-top:1px solid var(--border)}
 <a class="whatsapp" href="https://wa.me/919999999999" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">⌕</a>
 
 <script>
-const nav=document.getElementById('navbar');
-const menu=document.getElementById('menuBtn');
-menu.addEventListener('click',()=>nav.classList.toggle('open'));
-document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
-window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40));
+const nav = document.getElementById('navbar');
+const menu = document.getElementById('menuBtn');
 
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{if(entry.isIntersecting) entry.target.classList.add('visible')});
-},{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+menu.addEventListener('click', () => {
+  nav.classList.toggle('open');
+});
 
-document.getElementById('contactForm').addEventListener('submit',e=>{
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => {
+    nav.classList.remove('open');
+  });
+});
+
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+/* Scroll Reveal */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, {
+  threshold: 0.12
+});
+
+document.querySelectorAll('.reveal').forEach(el => {
+  observer.observe(el);
+});
+
+
+/* ================================
+   WHATSAPP CONTACT FORM
+================================ */
+
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+
   e.preventDefault();
-  const name=document.getElementById('name').value.trim();
-  alert(`Thank you${name ? ', '+name : ''}. Your enquiry has been captured. Connect this form to your email/CRM before launch.`);
+
+  /* Your WhatsApp number
+     Replace this with your actual number
+     Country code included, without + or spaces.
+  */
+  const whatsappNumber = '919999999999';
+
+
+  /* Get form values */
+  const name = document.getElementById('name').value.trim();
+  const business = document.getElementById('business').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const service = document.getElementById('service').value;
+  const budget = document.getElementById('budget').value;
+  const message = document.getElementById('message').value.trim();
+
+
+  /* Basic validation */
+  if (!name || !email) {
+    alert('Please enter your name and email address.');
+    return;
+  }
+
+
+  /* Create WhatsApp message */
+  const whatsappMessage =
+`Hello Velora Digital 👋
+
+I would like to discuss a project with your team.
+
+━━━━━━━━━━━━━━━━━━
+CLIENT DETAILS
+━━━━━━━━━━━━━━━━━━
+
+Name: ${name}
+Business: ${business || 'Not provided'}
+Email: ${email}
+Phone / WhatsApp: ${phone || 'Not provided'}
+
+━━━━━━━━━━━━━━━━━━
+PROJECT DETAILS
+━━━━━━━━━━━━━━━━━━
+
+Service Required: ${service}
+Budget Range: ${budget}
+
+Message:
+${message || 'No additional message provided.'}
+
+━━━━━━━━━━━━━━━━━━
+
+Sent from the Velora Digital website.`;
+
+  
+  /* Encode message for WhatsApp */
+  const encodedMessage = encodeURIComponent(whatsappMessage);
+
+
+  /* WhatsApp URL */
+  const whatsappURL =
+    `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+
+  /* Open WhatsApp */
+  window.open(whatsappURL, '_blank');
+
+
+  /* Optional success message */
+  setTimeout(() => {
+    alert('Your enquiry is ready in WhatsApp. Please press Send to submit it.');
+  }, 500);
+
 });
 </script>
 </body>
