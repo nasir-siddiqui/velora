@@ -467,22 +467,15 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
 `Hello Velora Digital 👋
 
 I would like to discuss a project with your team.
-
-━━━━━━━━━━━━━━━━━━
 CLIENT DETAILS
-━━━━━━━━━━━━━━━━━━
+Name: ${name}, 
+Business: ${business || 'Not provided'}, 
+Email: ${email}, 
+Phone / WhatsApp: ${phone || 'Not provided'}.
 
-Name: ${name}
-Business: ${business || 'Not provided'}
-Email: ${email}
-Phone / WhatsApp: ${phone || 'Not provided'}
-
-━━━━━━━━━━━━━━━━━━
 PROJECT DETAILS
-━━━━━━━━━━━━━━━━━━
-
-Service Required: ${service}
-Budget Range: ${budget}
+Service Required: ${service}, 
+Budget Range: ${budget}.
 
 Message:
 ${message || 'No additional message provided.'}
