@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Velora Digital | Digital Marketing & Growth Agency</title>
+<meta name="description" content="Velora Digital helps ambitious brands grow through digital marketing, SEO, paid media, branding, content strategy and conversion-focused websites.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== EDIT ME: brand config ===== */
+:root{
+  --bg:#050505;--bg2:#0b0b0b;--card:#101010;
+  --gold:#d4af37;--gold2:#b8860b;
+  --text:#fff;--text2:#a1a1a1;--muted:#707070;
+  --line:rgba(212,175,55,.18);
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Poppins',system-ui,sans-serif;
+  --pad:clamp(20px,6vw,96px);
+  /* Replace with your own image URLs, e.g. url('img/hero.jpg') */
+  --hero-img:none;
+  --p1:none;--p2:none;--p3:none;--p4:none;--p5:none;--p6:none;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--bg);color:var(--text);font:300 16px/1.7 var(--sans);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.08;letter-spacing:-.01em}
+h1{font-size:clamp(42px,9vw,96px)}
+h2{font-size:clamp(34px,5vw,60px)}
+h3{font-size:clamp(20px,2vw,26px)}
+em{font-style:normal;color:var(--gold)}
+.label{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:500;display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.label:before{content:"";width:36px;height:1px;background:var(--gold)}
+section{padding:clamp(72px,11vw,150px) var(--pad);position:relative}
+.wrap{max-width:1280px;margin:auto}
+.lead{color:var(--text2);max-width:560px;margin-top:22px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border-radius:999px;font:500 14px var(--sans);letter-spacing:.04em;border:1px solid var(--gold);cursor:pointer;transition:.35s;background:none;color:var(--text)}
+.btn span{transition:transform .35s}
+.btn:hover span{transform:translateX(5px)}
+.btn.gold{background:var(--gold);color:#050505}
+.btn.gold:hover{background:#e6c458;box-shadow:0 0 40px rgba(212,175,55,.35)}
+.btn.ghost{border-color:rgba(255,255,255,.3)}
+.btn.ghost:hover{border-color:var(--gold);color:var(--gold)}
+.row{display:flex;flex-wrap:wrap;gap:16px}
+
+/* nav */
+nav{position:fixed;inset:0 0 auto;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:22px var(--pad);transition:.4s;border-bottom:1px solid transparent}
+nav.solid{background:rgba(5,5,5,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line);padding-block:14px}
+.logo{font:500 22px var(--serif);letter-spacing:.02em}
+.logo b{color:var(--gold);font-weight:500}
+.links{display:flex;gap:36px;font-size:14px}
+.links a{color:var(--text2);transition:.3s;position:relative}
+.links a:hover,.links a.on{color:var(--text)}
+.links a:after{content:"";position:absolute;left:0;bottom:-6px;height:1px;width:0;background:var(--gold);transition:.3s}
+.links a:hover:after,.links a.on:after{width:100%}
+.nav-cta{padding:11px 22px}
+.burger{display:none;background:none;border:0;width:44px;height:44px;cursor:pointer;position:relative}
+.burger i{position:absolute;left:10px;right:10px;height:1px;background:#fff;transition:.35s}
+.burger i:nth-child(1){top:17px}.burger i:nth-child(2){top:26px}
+.burger[aria-expanded=true] i:nth-child(1){top:21px;transform:rotate(45deg)}
+.burger[aria-expanded=true] i:nth-child(2){top:21px;transform:rotate(-45deg)}
+.drawer{position:fixed;inset:0;z-index:40;background:rgba(5,5,5,.97);display:flex;flex-direction:column;justify-content:center;gap:8px;padding:0 var(--pad);opacity:0;visibility:hidden;transition:.4s}
+.drawer.open{opacity:1;visibility:visible}
+.drawer a.m{font:500 40px var(--serif);padding:8px 0;transform:translateY(16px);opacity:0;transition:.5s}
+.drawer.open a.m{transform:none;opacity:1}
+.drawer .btn{margin-top:28px;align-self:flex-start}
+@media(max-width:900px){.links,.nav-cta{display:none}.burger{display:block}nav{z-index:60}}
+
+/* hero */
+.hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;background:var(--hero-img) center/cover,radial-gradient(ellipse at 75% 30%,#1a1408 0,#050505 60%)}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#050505 15%,rgba(5,5,5,.55)),linear-gradient(0deg,#050505,transparent 40%)}
+.glow{position:absolute;width:60vmax;height:60vmax;right:-15vmax;top:-10vmax;border-radius:50%;background:radial-gradient(circle,rgba(212,175,55,.22),transparent 62%);animation:drift 14s ease-in-out infinite alternate;pointer-events:none}
+@keyframes drift{to{transform:translate(-6vmax,6vmax) scale(1.08)}}
+.hero .wrap{position:relative;width:100%}
+.hero .lead{font-size:clamp(16px,1.6vw,19px);max-width:520px;margin:30px 0 42px}
+.hero h1 span{display:block;opacity:0;transform:translateY(28px);animation:up .9s .15s forwards cubic-bezier(.2,.7,.2,1)}
+.hero h1 span+span{animation-delay:.35s}
+.hero .label,.hero .lead,.hero .row{opacity:0;animation:up .9s .6s forwards}
+.hero .row{animation-delay:.8s}
+@keyframes up{to{opacity:1;transform:none}}
+.scroll{position:absolute;bottom:28px;left:var(--pad);font-size:11px;letter-spacing:.24em;color:var(--muted);z-index:1}
+
+/* strip */
+.strip{background:var(--bg2);border-block:1px solid var(--line);padding-block:64px}
+.strip h2{font-size:clamp(24px,3vw,36px);margin-bottom:40px}
+.vals{display:grid;grid-template-columns:repeat(4,1fr)}
+.vals div{padding:8px 28px;border-left:1px solid var(--line);font:500 24px var(--serif)}
+.vals div:first-child{border:0;padding-left:0}
+.vals small{display:block;font:400 12px var(--sans);color:var(--gold);letter-spacing:.2em;margin-bottom:6px}
+
+/* about */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,7vw,120px);align-items:start}
+.split p+p{margin-top:20px}
+.split p{color:var(--text2)}
+.rule{height:1px;background:linear-gradient(90deg,var(--gold),transparent);margin-top:40px;width:120px}
+
+/* cards */
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:56px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:34px 28px;transition:.4s;position:relative;overflow:hidden}
+.card:hover{transform:translateY(-8px);border-color:rgba(212,175,55,.55);background:#141310}
+.card .n{font:500 56px var(--serif);color:transparent;-webkit-text-stroke:1px var(--gold);line-height:1;margin-bottom:26px}
+.card p{color:var(--text2);font-size:15px;margin-top:10px}
+.ico{width:28px;height:28px;stroke:var(--gold);fill:none;stroke-width:1.2;margin-bottom:18px}
+
+/* services */
+.services{background:var(--bg2)}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px}
+.svc{display:flex;flex-direction:column}
+.svc ul{list-style:none;margin:20px 0 26px;border-top:1px solid var(--line);padding-top:16px;font-size:14px;color:var(--text2)}
+.svc li{padding:3px 0 3px 18px;position:relative}
+.svc li:before{content:"";position:absolute;left:0;top:14px;width:8px;height:1px;background:var(--gold)}
+.svc a{margin-top:auto;color:var(--gold);font-size:14px;font-weight:500}
+.svc a span{display:inline-block;transition:.3s}
+.svc a:hover span{transform:translateX(6px)}
+
+/* work */
+.work{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:clamp(200px,24vw,320px);gap:20px;margin:56px 0 48px}
+.proj{position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--line);grid-column:span 4;background:var(--card)}
+.proj:nth-child(1){grid-column:span 7;grid-row:span 2}
+.proj:nth-child(2){grid-column:span 5}
+.proj:nth-child(3){grid-column:span 5}
+.proj:nth-child(4){grid-column:span 7}
+.proj:nth-child(5){grid-column:span 5}
+.proj:nth-child(6){grid-column:span 7}
+.ph{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.proj:nth-child(1) .ph{background-image:var(--p1),linear-gradient(140deg,#1d1608,#0a0a0a 70%)}
+.proj:nth-child(2) .ph{background-image:var(--p2),linear-gradient(200deg,#221a08,#080808 70%)}
+.proj:nth-child(3) .ph{background-image:var(--p3),linear-gradient(120deg,#0d0d0d,#241b07)}
+.proj:nth-child(4) .ph{background-image:var(--p4),linear-gradient(160deg,#171208,#070707)}
+.proj:nth-child(5) .ph{background-image:var(--p5),linear-gradient(220deg,#241b07,#0a0a0a)}
+.proj:nth-child(6) .ph{background-image:var(--p6),linear-gradient(100deg,#0b0b0b,#1c1507)}
+.proj .info{position:absolute;inset:0;padding:28px;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(0deg,rgba(5,5,5,.9),rgba(5,5,5,.1) 60%);transition:.5s}
+.proj .info small{font-size:11px;letter-spacing:.2em;color:var(--gold)}
+.proj .info h3{margin:6px 0}
+.proj .info p{font-size:14px;color:var(--text2);max-width:420px;max-height:0;opacity:0;overflow:hidden;transition:.5s}
+.proj .arr{position:absolute;top:22px;right:22px;width:44px;height:44px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;color:var(--gold);opacity:0;transform:translate(-8px,8px);transition:.4s}
+.proj:hover .ph,.proj:focus-within .ph{transform:scale(1.06)}
+.proj:hover .info,.proj:focus-within .info{background:linear-gradient(0deg,rgba(5,5,5,.95),rgba(5,5,5,.55))}
+.proj:hover p,.proj:focus-within p{max-height:80px;opacity:1}
+.proj:hover .arr,.proj:focus-within .arr{opacity:1;transform:none}
+
+/* media buying */
+.media{background:radial-gradient(ellipse at 50% 0,rgba(212,175,55,.16),transparent 60%),#050505;border-block:1px solid var(--line);text-align:center}
+.media .lead{margin-inline:auto}
+.flow{display:flex;justify-content:space-between;align-items:center;margin:64px auto;max-width:1000px;position:relative}
+.flow:before{content:"";position:absolute;left:5%;right:5%;top:22px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.flow div{position:relative;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--text2);width:20%}
+.flow div:before{content:"";display:block;width:13px;height:13px;margin:16px auto 22px;border-radius:50%;background:var(--bg);border:1px solid var(--gold);box-shadow:0 0 0 6px var(--bg),0 0 18px rgba(212,175,55,.5)}
+.media .label{justify-content:center}.media .label:before{display:none}
+
+/* why + process */
+.why{margin-top:56px}
+.why article{display:grid;grid-template-columns:clamp(90px,14vw,200px) 1fr 1fr;gap:24px;align-items:center;padding:36px 0;border-top:1px solid var(--line)}
+.why article:last-child{border-bottom:1px solid var(--line)}
+.why .big{font:500 clamp(56px,9vw,120px)/1 var(--serif);color:transparent;-webkit-text-stroke:1px var(--gold)}
+.why p{color:var(--text2)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:64px;position:relative}
+.step{padding:0 28px 0 0;position:relative;padding-top:38px;border-top:1px solid var(--line)}
+.step:before{content:"";position:absolute;top:-5px;left:0;width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 14px var(--gold)}
+.step small{color:var(--gold);letter-spacing:.2em;font-size:12px}
+.step h3{margin:8px 0 10px}.step p{color:var(--text2);font-size:15px}
+
+/* cta */
+.cta{text-align:center;background:radial-gradient(ellipse at 50% 50%,rgba(212,175,55,.2),transparent 55%),#050505;border-top:1px solid var(--line)}
+.cta h2{font-size:clamp(40px,7vw,88px)}
+.cta .lead{margin-inline:auto}
+.cta .row{justify-content:center;margin-top:40px}
+
+/* contact */
+.page{display:none}.page.show{display:block}
+.contact{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding:0}
+.contact>div{padding:150px var(--pad) 90px}
+.contact .l{background:radial-gradient(ellipse at 30% 20%,rgba(212,175,55,.14),transparent 60%),var(--bg2);border-right:1px solid var(--line)}
+.cinfo{margin-top:40px;display:grid;gap:22px}
+.cinfo small{display:block;font-size:11px;letter-spacing:.2em;color:var(--gold)}
+.cinfo a:hover{color:var(--gold)}
+form{display:grid;gap:22px}
+.f{display:grid;gap:8px}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+label{font-size:13px;color:var(--text2)}
+input,select,textarea{width:100%;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 16px;color:#fff;font:300 15px var(--sans);transition:.3s}
+textarea{min-height:130px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,175,55,.15)}
+select option{background:#101010}
+.ok{display:none;color:var(--gold);font-size:14px}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding:70px var(--pad) 36px;background:var(--bg2);position:relative}
+footer:before{content:"";position:absolute;top:-1px;left:var(--pad);width:120px;height:1px;background:var(--gold)}
+.fgrid{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.fgrid p{color:var(--text2);margin-top:8px;font-size:14px}
+.fgrid ul{list-style:none;font-size:14px;color:var(--text2);display:grid;gap:8px}
+.fgrid a:hover{color:var(--gold)}
+.copy{margin-top:56px;padding-top:24px;border-top:1px solid rgba(255,255,255,.06);font-size:12px;color:var(--muted)}
+
+.wa{position:fixed;right:22px;bottom:22px;z-index:45;width:58px;height:58px;border-radius:50%;background:var(--gold);display:grid;place-items:center;box-shadow:0 8px 30px rgba(0,0,0,.5),0 0 0 6px rgba(212,175,55,.12);transition:.35s}
+.wa:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 12px 36px rgba(212,175,55,.35)}
+.wa svg{width:28px;height:28px;fill:#050505}
+
+/* reveal: one gentle scroll reveal, hero handles its own entrance */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .8s,transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+@media(max-width:1000px){
+  .grid4{grid-template-columns:repeat(2,1fr)}
+  .grid3{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:repeat(2,1fr);row-gap:44px}
+}
+@media(max-width:760px){
+  .vals{grid-template-columns:1fr 1fr;row-gap:28px}
+  .vals div:nth-child(3){border-left:0;padding-left:0}
+  .split,.contact{grid-template-columns:1fr}
+  .grid4,.grid3{grid-template-columns:1fr}
+  .work{grid-template-columns:1fr;grid-auto-rows:280px}
+  .proj,.proj:nth-child(n){grid-column:auto;grid-row:auto}
+  .proj p{max-height:80px;opacity:1}.proj .arr{opacity:1;transform:none}
+  .flow{flex-direction:column;align-items:flex-start;gap:26px;margin-left:8px}
+  .flow:before{left:6px;right:auto;top:8px;bottom:8px;width:1px;height:auto;background:linear-gradient(var(--gold),transparent)}
+  .flow div{width:auto;text-align:left;display:flex;align-items:center;gap:20px}
+  .flow div:before{margin:0}
+  .why article{grid-template-columns:70px 1fr;}
+  .why article p{grid-column:2}
+  .steps{grid-template-columns:1fr;border-left:1px solid var(--line);row-gap:36px;margin-left:5px}
+  .step{border-top:0;padding:0 0 0 30px}
+  .step:before{top:6px;left:-5px}
+  .f2{grid-template-columns:1fr}
+  .contact .l{border:0}
+  .contact>div{padding-top:120px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .rv,.hero h1 span,.hero .label,.hero .lead,.hero .row{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== EDIT ME: contact details ===== -->
+<script>
+const CONFIG={whatsapp:"91XXXXXXXXXX",email:"hello@example.com",instagram:"theveloradofficial",
+ wamsg:"Hi Velora Digital, I'd like to book a free consultation."};
+</script>
+
+<nav id="nav">
+  <a class="logo" href="#home" data-go="home" aria-label="Velora Digital home">Velora <b>Digital</b></a>
+  <div class="links">
+    <a href="#home" data-go="home">Home</a><a href="#about" data-go="home">About</a>
+    <a href="#services" data-go="home">Services</a><a href="#work" data-go="home">Work</a>
+    <a href="#contact" data-go="contact">Contact</a>
+  </div>
+  <a class="btn gold nav-cta" href="#contact" data-go="contact">Book a Free Consultation</a>
+  <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><i></i><i></i></button>
+</nav>
+<div class="drawer" id="drawer">
+  <a class="m" href="#home" data-go="home">Home</a><a class="m" href="#about" data-go="home">About</a>
+  <a class="m" href="#services" data-go="home">Services</a><a class="m" href="#work" data-go="home">Work</a>
+  <a class="m" href="#contact" data-go="contact">Contact</a>
+  <a class="btn gold" href="#contact" data-go="contact">Book a Free Consultation <span>→</span></a>
+</div>
+
+<main>
+<!-- ================= HOME ================= -->
+<div class="page show" id="home">
+
+<header class="hero" id="top">
+  <div class="glow"></div>
+  <div class="wrap">
+    <p class="label">Digital marketing • Branding • Performance</p>
+    <h1><span>Your <em>Growth.</em></span><span>Our Strategy.</span></h1>
+    <p class="lead">We help ambitious brands grow through strategy, creativity and performance-driven digital marketing.</p>
+    <div class="row">
+      <a class="btn gold" href="#contact" data-go="contact">Book Free Consultation <span>→</span></a>
+      <a class="btn ghost" href="#work" data-go="home">View Our Work <span>→</span></a>
+    </div>
+  </div>
+  <div class="scroll">SCROLL TO EXPLORE ↓</div>
+</header>
+
+<section class="strip">
+  <div class="wrap">
+    <h2 class="rv">Built for brands that want to grow.</h2>
+    <div class="vals rv">
+      <div><small>01</small>Strategy</div><div><small>02</small>Creativity</div>
+      <div><small>03</small>Performance</div><div><small>04</small>Growth</div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap split">
+    <div class="rv"><p class="label">About Velora</p><h2>Strategy meets creativity.</h2><div class="rule"></div></div>
+    <div class="rv">
+      <p>Velora Digital is a modern marketing studio focused on building meaningful brands through data-driven strategy, creative storytelling and performance marketing.</p>
+      <p>We combine marketing, technology and creative thinking to help businesses build visibility, generate leads and create long-term growth.</p>
+    </div>
+  </div>
+  <div class="wrap grid4">
+    <div class="card rv"><svg class="ico" viewBox="0 0 24 24"><path d="M12 3l2.4 5.6L20 9l-4.2 3.8L17 19l-5-3-5 3 1.2-6.2L4 9l5.6-.4z"/></svg><div class="n">01</div><h3>Creativity</h3><p>Ideas that make brands memorable.</p></div>
+    <div class="card rv"><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg><div class="n">02</div><h3>Transparency</h3><p>Clear communication and measurable work.</p></div>
+    <div class="card rv"><svg class="ico" viewBox="0 0 24 24"><path d="M3 18l6-6 4 4 8-9M15 7h6v6"/></svg><div class="n">03</div><h3>Growth</h3><p>Marketing focused on meaningful business outcomes.</p></div>
+    <div class="card rv"><svg class="ico" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg><div class="n">04</div><h3>Performance</h3><p>Data-driven decisions and continuous optimization.</p></div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="rv"><p class="label">What we do</p><h2>Digital marketing built around growth.</h2>
+    <p class="lead">From building your digital presence to scaling performance campaigns, we create connected marketing systems designed around your business goals.</p></div>
+    <div class="grid3" id="svcGrid"></div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="rv"><p class="label">Selected work</p><h2>Work that speaks for itself.</h2>
+    <p class="lead">Explore selected projects where strategy, creativity and performance come together.</p></div>
+    <div class="work" id="workGrid"></div>
+    <a class="btn ghost" href="#work">View All Work <span>→</span></a>
+  </div>
+</section>
+
+<section class="media" id="media">
+  <div class="wrap">
+    <p class="label rv">Media buying</p>
+    <h2 class="rv">Turn attention into action.</h2>
+    <p class="lead rv">From strategy and audience planning to campaign execution and optimization, we build paid media systems designed around measurable growth.</p>
+    <div class="flow rv"><div>Strategy</div><div>Targeting</div><div>Campaign</div><div>Optimization</div><div>Growth</div></div>
+    <a class="btn gold rv" href="#contact" data-go="contact">Discuss Your Campaign <span>→</span></a>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap">
+    <div class="rv"><p class="label">Why Velora</p><h2>Why brands choose Velora.</h2></div>
+    <div class="why">
+      <article class="rv"><div class="big">01</div><h3>Strategy first</h3><p>Every campaign starts with a clear objective and measurable strategy.</p></article>
+      <article class="rv"><div class="big">02</div><h3>Performance focused</h3><p>We focus on meaningful metrics, not vanity numbers.</p></article>
+      <article class="rv"><div class="big">03</div><h3>Creative thinking</h3><p>Data tells us what works. Creativity makes people care.</p></article>
+      <article class="rv"><div class="big">04</div><h3>Built for growth</h3><p>Our systems are designed to evolve as your business grows.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="process">
+  <div class="wrap">
+    <h2 class="rv">How we build growth.</h2>
+    <div class="steps rv">
+      <div class="step"><small>STEP 01</small><h3>Discover</h3><p>Understand your business, audience, market and objectives.</p></div>
+      <div class="step"><small>STEP 02</small><h3>Strategize</h3><p>Build a focused marketing strategy based on your goals.</p></div>
+      <div class="step"><small>STEP 03</small><h3>Execute</h3><p>Launch creative, campaigns, content and digital experiences.</p></div>
+      <div class="step"><small>STEP 04</small><h3>Optimize</h3><p>Measure performance, learn and continuously improve.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2 class="rv">Ready to build what’s next?</h2>
+    <p class="lead rv">Let’s turn your next idea into a growth strategy.</p>
+    <div class="row rv">
+      <a class="btn gold" href="#contact" data-go="contact">Book Free Consultation <span>→</span></a>
+      <a class="btn ghost" data-wa href="#" target="_blank" rel="noopener">Chat on WhatsApp <span>→</span></a>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ================= CONTACT ================= -->
+<div class="page" id="contact">
+  <div class="contact">
+    <div class="l">
+      <p class="label">Let’s talk</p>
+      <h1 style="font-size:clamp(38px,5.5vw,72px)">Have a growth challenge?</h1>
+      <p class="lead">Tell us about your business, your goals and where you want to go next. We’ll explore how Velora can help.</p>
+      <div class="cinfo">
+        <div><small>INSTAGRAM</small><a data-ig target="_blank" rel="noopener" href="#">@theveloradofficial</a></div>
+        <div><small>WHATSAPP</small><a data-wa data-wat target="_blank" rel="noopener" href="#">[PLACEHOLDER]</a></div>
+        <div><small>EMAIL</small><a data-mail href="#">[PLACEHOLDER]</a></div>
+      </div>
+    </div>
+    <div>
+      <form id="form" novalidate>
+        <div class="f2">
+          <div class="f"><label for="name">Name</label><input id="name" name="name" required autocomplete="name"></div>
+          <div class="f"><label for="biz">Business name</label><input id="biz" name="business"></div>
+        </div>
+        <div class="f2">
+          <div class="f"><label for="email">Email</label><input id="email" name="email" type="email" required autocomplete="email"></div>
+          <div class="f"><label for="phone">Phone / WhatsApp</label><input id="phone" name="phone" type="tel" autocomplete="tel"></div>
+        </div>
+        <div class="f2">
+          <div class="f"><label for="svc">Service required</label>
+            <select id="svc" name="service"><option>Social Media Marketing</option><option>SEO</option><option>Google Ads</option><option>Media Buying</option><option>Website Development</option><option>Branding &amp; Content Strategy</option><option>Other</option></select></div>
+          <div class="f"><label for="bud">Budget range</label>
+            <select id="bud" name="budget"><option>Under ₹25,000</option><option>₹25,000 – ₹50,000</option><option>₹50,000 – ₹1,00,000</option><option>₹1,00,000+</option></select></div>
+        </div>
+        <div class="f"><label for="msg">Message</label><textarea id="msg" name="message"></textarea></div>
+        <div><button class="btn gold" type="submit">Start a Conversation <span>→</span></button></div>
+        <p class="ok" id="ok" role="status">Thanks — your message is ready to send in your email app.</p>
+      </form>
+    </div>
+  </div>
+</div>
+</main>
+
+<footer>
+  <div class="fgrid">
+    <div><a class="logo" href="#home" data-go="home">Velora <b>Digital</b></a><p>Your Growth. Our Strategy.</p></div>
+    <ul><li><a href="#home" data-go="home">Home</a></li><li><a href="#about" data-go="home">About</a></li><li><a href="#services" data-go="home">Services</a></li><li><a href="#work" data-go="home">Work</a></li><li><a href="#contact" data-go="contact">Contact</a></li></ul>
+    <ul><li><a data-ig target="_blank" rel="noopener" href="#">Instagram — @theveloradofficial</a></li><li><a data-wa target="_blank" rel="noopener" href="#">WhatsApp</a></li><li><a data-mail href="#">Email</a></li></ul>
+  </div>
+  <p class="copy">© 2026 Velora Digital. Strategy • Creativity • Growth.</p>
+</footer>
+
+<a class="wa" data-wa target="_blank" rel="noopener" href="#" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.5 15.200L2 22l4.900-1.500A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.200 14.800l-.4-.2-2.500.8.8-2.400-.3-.4A8 8 0 0 1 12 4zM8.800 7.500c-.3 0-.6.100-.8.500-.3.400-.9 1.100-.9 2.300 0 1.300.9 2.500 1 2.700.1.200 1.800 2.900 4.500 3.900 2.200.8 2.700.7 3.100.6.500-.1 1.500-.6 1.700-1.200.2-.6.2-1.100.1-1.200l-.5-.3-1.600-.8c-.2-.1-.4-.1-.6.100l-.7.900c-.1.200-.3.200-.5.100-.9-.4-1.900-1-2.700-2.200-.2-.3.200-.3.500-.9.100-.1 0-.3 0-.4l-.7-1.700c-.2-.5-.4-.4-.6-.4z"/></svg>
+</a>
+
+<script>
+/* ===== EDIT ME: content ===== */
+const SERVICES=[
+ ["Social Media Marketing","Build a recognizable presence and turn attention into meaningful engagement.",["Social strategy","Content planning","Creative direction","Community growth","Performance tracking"],"M4 5h16v11H9l-5 4z"],
+ ["SEO","Increase organic visibility and attract high-intent customers through strategic search optimization.",["Technical SEO","On-page SEO","Local SEO","Keyword strategy","Content optimization"],"M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM21 21l-5-5"],
+ ["Google Ads","Generate qualified traffic and leads through performance-driven search and paid campaigns.",["Search campaigns","Display campaigns","Conversion tracking","Keyword targeting","Campaign optimization"],"M12 3v18M3 12h18M6 6l12 12"],
+ ["Media Buying & Planning","Plan, launch and optimize paid media campaigns across digital platforms.",["Audience strategy","Media planning","Campaign setup","Budget allocation","Optimization"],"M3 12h4l3-8 4 16 3-8h4"],
+ ["Website Development","Build fast, modern and conversion-focused websites designed to turn visitors into customers.",["Website design","WordPress development","Landing pages","Conversion optimization","Mobile optimization"],"M3 5h18v14H3zM3 9h18"],
+ ["Branding & Content Strategy","Create consistent brand identities and content systems that communicate clearly and build recognition.",["Brand strategy","Visual direction","Content strategy","Messaging","Creative systems"],"M12 3l9 5-9 5-9-5zM3 13l9 5 9-5"]
+];
+const PROJECTS=[
+ ["Social Media Growth","Social Presence, Reimagined","Building a stronger digital presence through strategic content and creative direction.","Abstract dark social media content grid with gold accents"],
+ ["Brand Identity","A Brand Built to Be Remembered","Creating a premium visual identity designed for recognition and consistency.","Black and gold brand identity mockup"],
+ ["Google Ads Campaign","Performance That Converts","Using data-driven campaign strategy to improve qualified traffic and lead generation.","Campaign analytics dashboard on a dark screen"],
+ ["Website Design","Digital Experience, Redesigned","A modern conversion-focused website built around clarity and user experience.","Modern website design on a laptop in a dark studio"],
+ ["SEO Growth","From Search to Visibility","Building sustainable organic visibility through strategic SEO.","Search ranking growth chart with golden light"],
+ ["Content Strategy","Content With Purpose","Creating a structured content system designed to build authority and engagement.","Editorial content planning workspace in charcoal tones"]
+];
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+$("#svcGrid").innerHTML=SERVICES.map((s,i)=>`<article class="card svc rv"><svg class="ico" viewBox="0 0 24 24"><path d="${s[3]}"/></svg><h3>${s[0]}</h3><p>${s[1]}</p><ul>${s[2].map(x=>`<li>${x}</li>`).join("")}</ul><a href="#contact" data-go="contact">Explore Service <span>→</span></a></article>`).join("");
+$("#workGrid").innerHTML=PROJECTS.map(p=>`<a class="proj rv" href="#contact" data-go="contact" aria-label="${p[1]}"><div class="ph" role="img" aria-label="${p[3]}"></div><div class="info"><small>${p[0].toUpperCase()}</small><h3>${p[1]}</h3><p>${p[2]}</p></div><span class="arr">↗</span></a>`).join("");
+
+/* contact links */
+const wa=`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(CONFIG.wamsg)}`;
+$$("[data-wa]").forEach(a=>a.href=wa);
+$$("[data-ig]").forEach(a=>a.href=`https://instagram.com/${CONFIG.instagram}`);
+$$("[data-mail]").forEach(a=>{a.href=`mailto:${CONFIG.email}`;if(a.closest(".cinfo"))a.textContent=CONFIG.email});
+$$("[data-wat]").forEach(a=>{if(CONFIG.whatsapp.indexOf("X")<0)a.textContent="+"+CONFIG.whatsapp});
+
+/* nav */
+const nav=$("#nav"),drawer=$("#drawer"),burger=$("#burger");
+addEventListener("scroll",()=>nav.classList.toggle("solid",scrollY>40),{passive:true});
+function menu(o){drawer.classList.toggle("open",o);burger.setAttribute("aria-expanded",o);document.body.style.overflow=o?"hidden":""}
+burger.onclick=()=>menu(!drawer.classList.contains("open"));
+addEventListener("keydown",e=>e.key==="Escape"&&menu(false));
+
+/* two-page routing (home / contact) */
+function show(page){$$(".page").forEach(p=>p.classList.toggle("show",p.id===page));
+  document.title=page==="contact"?"Contact | Velora Digital":"Velora Digital | Digital Marketing & Growth Agency";
+  $$(".links a").forEach(a=>a.classList.toggle("on",a.dataset.go===page&&(page==="contact"||a.getAttribute("href")==="#home")));
+  observe()}
+function route(){const h=location.hash.slice(1)||"home";
+  if(h==="contact"){show("contact");scrollTo(0,0)}
+  else{show("home");const t=h==="home"?null:document.getElementById(h);
+    setTimeout(()=>t?t.scrollIntoView():scrollTo(0,0),20)}}
+document.addEventListener("click",e=>{const a=e.target.closest("a[data-go]");if(!a)return;menu(false);
+  if(location.hash===a.getAttribute("href"))route()});
+addEventListener("hashchange",route);
+
+/* scroll reveal */
+let io;function observe(){io&&io.disconnect();
+  io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.12});
+  $$(".rv:not(.in)").forEach(el=>io.observe(el))}
+route();
+
+/* form: opens the visitor's email app (swap for Formspree/your backend later) */
+$("#form").onsubmit=e=>{e.preventDefault();const f=e.target;
+  if(!f.name.value.trim()||!/\S+@\S+\.\S+/.test(f.email.value)){(f.name.value.trim()?f.email:f.name).focus();return}
+  const body=`Name: ${f.name.value}\nBusiness: ${f.business.value}\nEmail: ${f.email.value}\nPhone: ${f.phone.value}\nService: ${f.service.value}\nBudget: ${f.budget.value}\n\n${f.message.value}`;
+  $("#ok").style.display="block";
+  location.href=`mailto:${CONFIG.email}?subject=${encodeURIComponent("New enquiry — "+f.service.value)}&body=${encodeURIComponent(body)}`};
+</script>
+</body>
+</html>
