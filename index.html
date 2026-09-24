@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Velora Digital helps ambitious brands grow through digital marketing, SEO, paid media, branding, content strategy and conversion-focused websites.">
+<meta name="theme-color" content="#050505">
+<title>Velora Digital | Digital Marketing & Growth Agency</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#050505;--bg2:#0b0b0b;--card:#101010;--gold:#d4af37;--gold2:#b8860b;
+  --white:#fff;--text:#a1a1a1;--muted:#707070;--border:rgba(212,175,55,.18);
+  --max:1240px;--ease:cubic-bezier(.2,.7,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:Poppins,sans-serif;line-height:1.7;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{display:block;width:100%;object-fit:cover}
+button,input,select,textarea{font:inherit}
+.container{width:min(var(--max),calc(100% - 48px));margin:auto}
+.section{padding:120px 0;position:relative}
+.eyebrow{font-size:11px;letter-spacing:.22em;color:var(--gold);font-weight:600;text-transform:uppercase}
+.serif{font-family:"Playfair Display",serif}
+h1,h2,h3{line-height:1.05}
+h2{font:600 clamp(42px,6vw,76px) "Playfair Display",serif}
+.section-head{max-width:850px;margin-bottom:65px}
+.section-head p{color:var(--text);max-width:650px;margin-top:22px}
+.gold{color:var(--gold)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 24px;border:1px solid var(--gold);border-radius:4px;transition:.35s var(--ease);font-size:13px;font-weight:600;letter-spacing:.02em}
+.btn-primary{background:var(--gold);color:#050505}
+.btn-primary:hover{background:#f0cf55;transform:translateY(-3px);box-shadow:0 12px 35px rgba(212,175,55,.18)}
+.btn-outline{border-color:rgba(255,255,255,.28);color:#fff}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-3px)}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.visible{opacity:1;transform:none}
+
+/* NAV */
+.nav{position:fixed;z-index:1000;top:0;left:0;width:100%;padding:20px 0;transition:.35s}
+.nav.scrolled{background:rgba(5,5,5,.82);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:30px}
+.logo{font:700 25px "Playfair Display",serif;letter-spacing:-.03em}
+.logo span{color:var(--gold)}
+.nav-links{display:flex;gap:30px;align-items:center;font-size:13px;color:#ddd}
+.nav-links a{position:relative}
+.nav-links a:after{content:"";position:absolute;left:0;bottom:-7px;width:0;height:1px;background:var(--gold);transition:.3s}
+.nav-links a:hover:after{width:100%}
+.nav-cta{padding:11px 17px;font-size:12px}
+.menu-btn{display:none;background:none;border:0;color:white;font-size:25px;cursor:pointer}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:
+linear-gradient(90deg,rgba(5,5,5,.96) 10%,rgba(5,5,5,.72) 52%,rgba(5,5,5,.9)),
+url("https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=2200&q=85") center/cover}
+.hero-bg:after{content:"";position:absolute;inset:-20%;background:radial-gradient(circle at 70% 50%,rgba(212,175,55,.12),transparent 28%);animation:glow 8s ease-in-out infinite alternate}
+@keyframes glow{from{transform:scale(1);opacity:.5}to{transform:scale(1.12);opacity:1}}
+.hero-content{position:relative;z-index:2;padding:150px 0 100px;max-width:900px}
+.hero h1{font-size:clamp(54px,8.5vw,104px);margin:22px 0 28px;letter-spacing:-.045em}
+.hero h1 em{font-style:normal;color:var(--gold);font-family:"Playfair Display",serif}
+.hero-copy{max-width:590px;color:#c5c5c5;font-size:17px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:36px}
+.scroll-note{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);font-size:10px;letter-spacing:.25em;color:#777}
+.scroll-note span{color:var(--gold)}
+
+/* STRIP */
+.value-strip{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg2)}
+.value-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.value{padding:32px 25px;border-right:1px solid var(--border)}
+.value:first-child{padding-left:0}.value:last-child{border:0}
+.value strong{display:block;font-size:12px;letter-spacing:.08em}.value small{color:var(--gold);font-size:10px;margin-right:8px}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center}
+.about-copy{color:var(--text);font-size:16px}
+.about-copy p+p{margin-top:20px}
+.about-line{height:1px;background:linear-gradient(90deg,var(--gold),transparent);margin-top:35px}
+
+/* CARDS */
+.cards-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{background:var(--card);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:30px;min-height:270px;transition:.4s var(--ease);position:relative;overflow:hidden}
+.card:before{content:"";position:absolute;left:0;top:0;width:0;height:2px;background:var(--gold);transition:.4s}
+.card:hover{transform:translateY(-8px);border-color:var(--border);background:#121212}
+.card:hover:before{width:100%}
+.card-num{font:500 36px "Playfair Display",serif;color:var(--gold);opacity:.85}
+.card h3{font-size:20px;margin:35px 0 10px}
+.card p{color:var(--text);font-size:13px}
+
+/* SERVICES */
+.services{background:var(--bg2)}
+.service-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.service{padding:34px;border:1px solid rgba(255,255,255,.07);background:#0d0d0d;border-radius:8px;transition:.35s}
+.service:hover{border-color:var(--border);transform:translateY(-4px)}
+.service-top{display:flex;justify-content:space-between;gap:20px}
+.service-num{color:var(--gold);font-size:12px;letter-spacing:.15em}
+.service h3{font:600 29px "Playfair Display",serif;margin:15px 0}
+.service p,.service li{font-size:13px;color:var(--text)}
+.service ul{list-style:none;margin:20px 0}
+.service li{margin:6px 0}.service li:before{content:"— ";color:var(--gold)}
+.service-link{font-size:12px;color:#fff}.service-link:hover{color:var(--gold)}
+
+/* WORK */
+.work-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:18px}
+.project{position:relative;min-height:410px;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.06)}
+.project:nth-child(2),.project:nth-child(3){min-height:300px}
+.project:nth-child(4),.project:nth-child(5),.project:nth-child(6){min-height:330px}
+.project img{position:absolute;inset:0;height:100%;transition:.7s var(--ease)}
+.project:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 25%,rgba(0,0,0,.9))}
+.project:hover img{transform:scale(1.06)}
+.project-info{position:absolute;z-index:2;bottom:0;padding:28px;width:100%}
+.project-info .cat{color:var(--gold);font-size:10px;letter-spacing:.16em}
+.project-info h3{font:600 31px "Playfair Display",serif;margin:7px 0}
+.project-info p{color:#ccc;font-size:12px;max-width:470px}
+.project-arrow{position:absolute;right:25px;bottom:25px;z-index:3;color:var(--gold);font-size:25px}
+
+/* FEATURE */
+.feature{padding:150px 0;background:linear-gradient(90deg,rgba(5,5,5,.95),rgba(5,5,5,.74)),url("https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=2200&q=80") center/cover fixed}
+.feature h2{max-width:850px}
+.process-line{display:grid;grid-template-columns:repeat(5,1fr);margin-top:65px;border-top:1px solid var(--border)}
+.step{padding:22px 12px 0;border-right:1px solid var(--border);position:relative}
+.step:last-child{border:0}.step:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold);position:absolute;top:-4px;left:0;box-shadow:0 0 18px rgba(212,175,55,.5)}
+.step strong{display:block;font-size:12px}.step span{display:block;color:var(--text);font-size:11px;margin-top:5px}
+
+/* WHY / PROCESS */
+.editorial{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid rgba(255,255,255,.08)}
+.editorial-item{padding:45px 20px 45px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.editorial-item:nth-child(even){padding-left:40px;border-left:1px solid rgba(255,255,255,.08)}
+.editorial-num{color:var(--gold);font-size:12px;letter-spacing:.15em}
+.editorial h3{font:500 clamp(25px,3vw,38px) "Playfair Display",serif;margin:20px 0 10px}
+.editorial p{color:var(--text);font-size:13px;max-width:500px}
+
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border)}
+.timeline-item{background:var(--bg);padding:35px}
+.timeline-item span{color:var(--gold);font-size:11px;letter-spacing:.15em}
+.timeline-item h3{font:500 27px "Playfair Display",serif;margin:18px 0 10px}.timeline-item p{color:var(--text);font-size:13px}
+
+/* CTA */
+.final-cta{padding:150px 0;text-align:center;position:relative;overflow:hidden;border-top:1px solid var(--border)}
+.final-cta:before{content:"";position:absolute;width:600px;height:600px;border-radius:50%;background:rgba(212,175,55,.08);filter:blur(90px);left:50%;top:45%;transform:translate(-50%,-50%)}
+.final-cta>*{position:relative}.final-cta h2{font-size:clamp(48px,7vw,90px);max-width:900px;margin:18px auto 25px}.final-cta p{color:var(--text);margin-bottom:32px}
+
+/* CONTACT */
+.contact{background:var(--bg2)}
+.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:80px}
+.contact-info h2{margin:18px 0 25px}.contact-info p{color:var(--text);max-width:500px}
+.details{margin-top:35px;display:grid;gap:18px}.details strong{display:block;font-size:11px;color:var(--gold);letter-spacing:.14em}.details span{font-size:13px;color:#ccc}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}
+.field label{font-size:11px;color:#bbb}
+.field input,.field select,.field textarea{width:100%;background:#090909;color:#fff;border:1px solid rgba(255,255,255,.12);padding:14px;border-radius:4px;outline:none;transition:.25s}
+.field textarea{min-height:140px;resize:vertical}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,175,55,.06)}
+.form button{grid-column:1/-1;width:max-content}
+
+/* FOOTER */
+footer{padding:55px 0 25px;border-top:1px solid var(--border)}
+.footer-top{display:flex;justify-content:space-between;gap:40px;padding-bottom:45px}
+.footer-brand p{color:var(--text);font-size:12px;margin-top:8px}.footer-links{display:flex;gap:22px;font-size:12px;color:#bbb}.footer-links a:hover{color:var(--gold)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:20px;display:flex;justify-content:space-between;color:#666;font-size:10px}
+
+/* WHATSAPP */
+.whatsapp{position:fixed;right:22px;bottom:22px;width:56px;height:56px;border-radius:50%;background:#1fce6a;color:#fff;display:grid;place-items:center;z-index:999;box-shadow:0 10px 30px rgba(0,0,0,.4);font-size:24px;transition:.3s}
+.whatsapp:hover{transform:scale(1.08) translateY(-3px)}
+
+/* MOBILE */
+@media(max-width:900px){
+  .nav-links,.nav-cta{display:none}.menu-btn{display:block}
+  .nav.open{background:rgba(5,5,5,.96);backdrop-filter:blur(18px)}
+  .nav.open .nav-links{display:flex;position:absolute;top:76px;left:0;width:100%;padding:35px 24px;flex-direction:column;align-items:flex-start;background:#070707;border-top:1px solid var(--border)}
+  .value-grid,.cards-4,.timeline{grid-template-columns:repeat(2,1fr)}
+  .value:nth-child(2){border-right:0}.value:nth-child(3){border-top:1px solid var(--border)}.value:nth-child(4){border-top:1px solid var(--border)}
+  .about-grid,.contact-grid{grid-template-columns:1fr;gap:45px}
+  .service-grid{grid-template-columns:1fr}
+  .work-grid{grid-template-columns:1fr}
+  .process-line{grid-template-columns:1fr 1fr;border-top:0;gap:1px;background:var(--border)}
+  .step{background:var(--bg);border:0;border-top:1px solid var(--border);padding:25px}
+  .step:before{display:none}
+}
+@media(max-width:600px){
+  .container{width:min(var(--max),calc(100% - 32px))}
+  .section{padding:85px 0}
+  .hero-content{padding-top:130px}
+  .hero h1{font-size:clamp(47px,14vw,64px)}
+  .hero-copy{font-size:15px}
+  .hero-actions .btn{width:100%}
+  .scroll-note{display:none}
+  .value-grid,.cards-4,.timeline,.editorial{grid-template-columns:1fr}
+  .value{border-right:0;border-bottom:1px solid var(--border);padding:24px 0!important}
+  .value:last-child{border-bottom:0}
+  .editorial-item,.editorial-item:nth-child(even){padding:32px 0;border-left:0}
+  .process-line{grid-template-columns:1fr}
+  .form{grid-template-columns:1fr}.field.full{grid-column:auto}.form button{grid-column:auto;width:100%}
+  .footer-top,.footer-bottom{flex-direction:column;gap:22px}
+  .footer-links{flex-wrap:wrap}
+  .project,.project:nth-child(n){min-height:340px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}
+  *,*:before,*:after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+
+<body>
+
+<header class="nav" id="navbar">
+  <div class="container nav-inner">
+    <a href="#home" class="logo">Velora<span>.</span></a>
+    <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
+      <a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#work">Work</a><a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="btn btn-primary nav-cta">Book a Free Consultation</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="container hero-content reveal">
+    <div class="eyebrow">Digital Marketing • Branding • Performance</div>
+    <h1>Your <em>Growth.</em><br>Our Strategy.</h1>
+    <p class="hero-copy">We help ambitious brands grow through strategy, creativity and performance-driven digital marketing.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary">Book Free Consultation →</a>
+      <a href="#work" class="btn btn-outline">View Our Work →</a>
+    </div>
+  </div>
+  <div class="scroll-note">SCROLL TO EXPLORE <span>↓</span></div>
+</section>
+
+<section class="value-strip">
+  <div class="container value-grid">
+    <div class="value"><small>01</small><strong>Strategy</strong></div>
+    <div class="value"><small>02</small><strong>Creativity</strong></div>
+    <div class="value"><small>03</small><strong>Performance</strong></div>
+    <div class="value"><small>04</small><strong>Growth</strong></div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="container about-grid reveal">
+    <div>
+      <div class="eyebrow">About Velora</div>
+      <h2>Strategy Meets <span class="gold">Creativity.</span></h2>
+    </div>
+    <div class="about-copy">
+      <p>Velora Digital is a modern marketing studio focused on building meaningful brands through data-driven strategy, creative storytelling and performance marketing.</p>
+      <p>We combine marketing, technology and creative thinking to help businesses build visibility, generate leads and create long-term growth.</p>
+      <div class="about-line"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container reveal">
+    <div class="section-head">
+      <div class="eyebrow">Our Values</div>
+      <h2>What We <span class="gold">Believe.</span></h2>
+    </div>
+    <div class="cards-4">
+      <article class="card"><div class="card-num">01</div><h3>Creativity</h3><p>Ideas that make brands memorable.</p></article>
+      <article class="card"><div class="card-num">02</div><h3>Transparency</h3><p>Clear communication and measurable work.</p></article>
+      <article class="card"><div class="card-num">03</div><h3>Growth</h3><p>Marketing focused on meaningful business outcomes.</p></article>
+      <article class="card"><div class="card-num">04</div><h3>Performance</h3><p>Data-driven decisions and continuous optimization.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section services" id="services">
+  <div class="container reveal">
+    <div class="section-head">
+      <div class="eyebrow">What We Do</div>
+      <h2>Digital Marketing Built Around <span class="gold">Growth.</span></h2>
+      <p>From building your digital presence to scaling performance campaigns, we create connected marketing systems designed around your business goals.</p>
+    </div>
+    <div class="service-grid">
+      <article class="service"><div class="service-num">01 — SOCIAL MEDIA MARKETING</div><h3>Social Presence, Reimagined.</h3><p>Build a recognizable presence and turn attention into meaningful engagement.</p><ul><li>Social strategy</li><li>Content planning</li><li>Creative direction</li><li>Community growth</li><li>Performance tracking</li></ul><a class="service-link" href="#contact">Explore Service →</a></article>
+      <article class="service"><div class="service-num">02 — SEO</div><h3>Search That Compounds.</h3><p>Increase organic visibility and attract high-intent customers through strategic search optimization.</p><ul><li>Technical SEO</li><li>On-page SEO</li><li>Local SEO</li><li>Keyword strategy</li><li>Content optimization</li></ul><a class="service-link" href="#contact">Explore Service →</a></article>
+      <article class="service"><div class="service-num">03 — GOOGLE ADS</div><h3>Performance That Converts.</h3><p>Generate qualified traffic and leads through performance-driven search and paid campaigns.</p><ul><li>Search campaigns</li><li>Display campaigns</li><li>Conversion tracking</li><li>Keyword targeting</li><li>Campaign optimization</li></ul><a class="service-link" href="#contact">Explore Service →</a></article>
+      <article class="service"><div class="service-num">04 — MEDIA BUYING & PLANNING</div><h3>Attention, Strategically Bought.</h3><p>Plan, launch and optimize paid media campaigns across digital platforms.</p><ul><li>Audience strategy</li><li>Media planning</li><li>Campaign setup</li><li>Budget allocation</li><li>Optimization</li></ul><a class="service-link" href="#contact">Explore Service →</a></article>
+      <article class="service"><div class="service-num">05 — WEBSITE DEVELOPMENT</div><h3>Digital Experiences That Convert.</h3><p>Build fast, modern and conversion-focused websites designed to turn visitors into customers.</p><ul><li>Website design</li><li>WordPress development</li><li>Landing pages</li><li>Conversion optimization</li><li>Mobile optimization</li></ul><a class="service-link" href="#contact">Explore Service →</a></article>
+      <article class="service"><div class="service-num">06 — BRANDING & CONTENT STRATEGY</div><h3>Build Recognition.</h3><p>Create consistent brand identities and content systems that communicate clearly and build recognition.</p><ul><li>Brand strategy</li><li>Visual direction</li><li>Content strategy</li><li>Messaging</li><li>Creative systems</li></ul><a class="service-link" href="#contact">Explore Service →</a></article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="work">
+  <div class="container reveal">
+    <div class="section-head">
+      <div class="eyebrow">Selected Work</div>
+      <h2>Work That Speaks for <span class="gold">Itself.</span></h2>
+      <p>Explore selected projects where strategy, creativity and performance come together.</p>
+    </div>
+    <div class="work-grid">
+      <article class="project"><img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=1400&q=80" alt="Brand identity project"><div class="project-info"><span class="cat">SOCIAL MEDIA GROWTH</span><h3>Social Presence, Reimagined</h3><p>Building a stronger digital presence through strategic content and creative direction.</p></div><span class="project-arrow">↗</span></article>
+      <article class="project"><img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1200&q=80" alt="Premium brand identity"><div class="project-info"><span class="cat">BRAND IDENTITY</span><h3>A Brand Built to Be Remembered</h3><p>Creating a premium visual identity designed for recognition and consistency.</p></div><span class="project-arrow">↗</span></article>
+      <article class="project"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80" alt="Performance marketing analytics"><div class="project-info"><span class="cat">GOOGLE ADS CAMPAIGN</span><h3>Performance That Converts</h3><p>Using data-driven campaign strategy to improve qualified traffic and lead generation.</p></div><span class="project-arrow">↗</span></article>
+      <article class="project"><img src="https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=1400&q=80" alt="Website design project"><div class="project-info"><span class="cat">WEBSITE DESIGN</span><h3>Digital Experience, Redesigned</h3><p>A modern conversion-focused website built around clarity and user experience.</p></div><span class="project-arrow">↗</span></article>
+      <article class="project"><img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1200&q=80" alt="SEO growth analytics"><div class="project-info"><span class="cat">SEO GROWTH</span><h3>From Search to Visibility</h3><p>Building sustainable organic visibility through strategic SEO.</p></div><span class="project-arrow">↗</span></article>
+      <article class="project"><img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1200&q=80" alt="Content strategy workspace"><div class="project-info"><span class="cat">CONTENT STRATEGY</span><h3>Content With Purpose</h3><p>Creating a structured content system designed to build authority and engagement.</p></div><span class="project-arrow">↗</span></article>
+    </div>
+    <div style="text-align:center;margin-top:35px"><a href="#contact" class="btn btn-outline">View All Work →</a></div>
+  </div>
+</section>
+
+<section class="feature">
+  <div class="container reveal">
+    <div class="eyebrow">Media Buying</div>
+    <h2>Turn Attention Into <span class="gold">Action.</span></h2>
+    <p style="max-width:650px;color:#bbb;margin-top:22px">From strategy and audience planning to campaign execution and optimization, we build paid media systems designed around measurable growth.</p>
+    <div class="process-line">
+      <div class="step"><strong>Strategy</strong><span>Define the objective</span></div>
+      <div class="step"><strong>Targeting</strong><span>Find the right audience</span></div>
+      <div class="step"><strong>Campaign</strong><span>Launch with intent</span></div>
+      <div class="step"><strong>Optimization</strong><span>Improve performance</span></div>
+      <div class="step"><strong>Growth</strong><span>Scale what works</span></div>
+    </div>
+    <a href="#contact" class="btn btn-primary" style="margin-top:42px">Discuss Your Campaign →</a>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container reveal">
+    <div class="section-head"><div class="eyebrow">Why Velora</div><h2>Why Brands Choose <span class="gold">Velora.</span></h2></div>
+    <div class="editorial">
+      <article class="editorial-item"><span class="editorial-num">01</span><h3>Strategy First</h3><p>Every campaign starts with a clear objective and measurable strategy.</p></article>
+      <article class="editorial-item"><span class="editorial-num">02</span><h3>Performance Focused</h3><p>We focus on meaningful metrics, not vanity numbers.</p></article>
+      <article class="editorial-item"><span class="editorial-num">03</span><h3>Creative Thinking</h3><p>Data tells us what works. Creativity makes people care.</p></article>
+      <article class="editorial-item"><span class="editorial-num">04</span><h3>Built for Growth</h3><p>Our systems are designed to evolve as your business grows.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--bg2)">
+  <div class="container reveal">
+    <div class="section-head"><div class="eyebrow">Our Process</div><h2>How We Build <span class="gold">Growth.</span></h2></div>
+    <div class="timeline">
+      <article class="timeline-item"><span>01 — DISCOVER</span><h3>Understand</h3><p>Understand your business, audience, market and objectives.</p></article>
+      <article class="timeline-item"><span>02 — STRATEGIZE</span><h3>Plan</h3><p>Build a focused marketing strategy based on your goals.</p></article>
+      <article class="timeline-item"><span>03 — EXECUTE</span><h3>Launch</h3><p>Launch creative, campaigns, content and digital experiences.</p></article>
+      <article class="timeline-item"><span>04 — OPTIMIZE</span><h3>Improve</h3><p>Measure performance, learn and continuously improve.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="container reveal">
+    <div class="eyebrow">Let's Build What's Next</div>
+    <h2>Ready to Build <span class="gold">What’s Next?</span></h2>
+    <p>Let’s turn your next idea into a growth strategy.</p>
+    <a href="#contact" class="btn btn-primary">Book Free Consultation</a>
+    <a href="https://wa.me/919999999999" class="btn btn-outline" style="margin-left:8px" target="_blank" rel="noopener">Chat on WhatsApp</a>
+  </div>
+</section>
+
+<section class="section contact" id="contact">
+  <div class="container contact-grid reveal">
+    <div class="contact-info">
+      <div class="eyebrow">Let's Talk</div>
+      <h2>Have a <span class="gold">Growth Challenge?</span></h2>
+      <p>Tell us about your business, your goals and where you want to go next. We’ll explore how Velora can help.</p>
+      <div class="details">
+        <div><strong>Instagram</strong><span>@theveloradofficial</span></div>
+        <div><strong>WhatsApp</strong><span>+91 99999 99999</span></div>
+        <div><strong>Email</strong><span>hello@veloradigital.com</span></div>
+      </div>
+    </div>
+    <form class="form" id="contactForm">
+      <div class="field"><label for="name">Name</label><input id="name" required placeholder="Your name"></div>
+      <div class="field"><label for="business">Business Name</label><input id="business" placeholder="Your business"></div>
+      <div class="field"><label for="email">Email</label><input id="email" type="email" required placeholder="you@example.com"></div>
+      <div class="field"><label for="phone">Phone / WhatsApp</label><input id="phone" placeholder="+91"></div>
+      <div class="field"><label for="service">Service Required</label><select id="service"><option>Social Media Marketing</option><option>SEO</option><option>Google Ads</option><option>Media Buying</option><option>Website Development</option><option>Branding & Content Strategy</option><option>Other</option></select></div>
+      <div class="field"><label for="budget">Budget Range</label><select id="budget"><option>Under ₹25,000</option><option>₹25,000 – ₹50,000</option><option>₹50,000 – ₹1,00,000</option><option>₹1,00,000+</option></select></div>
+      <div class="field full"><label for="message">Message</label><textarea id="message" placeholder="Tell us about your goals..."></textarea></div>
+      <button class="btn btn-primary" type="submit">Start a Conversation →</button>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand"><div class="logo">Velora<span>.</span></div><p>Your Growth. Our Strategy.</p></div>
+      <nav class="footer-links"><a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#work">Work</a><a href="#contact">Contact</a><a href="https://instagram.com/theveloradofficial" target="_blank" rel="noopener">Instagram</a></nav>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Velora Digital. Strategy • Creativity • Growth.</span><span>Built for ambitious brands.</span></div>
+  </div>
+</footer>
+
+<a class="whatsapp" href="https://wa.me/919999999999" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">⌕</a>
+
+<script>
+const nav=document.getElementById('navbar');
+const menu=document.getElementById('menuBtn');
+menu.addEventListener('click',()=>nav.classList.toggle('open'));
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40));
+
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{if(entry.isIntersecting) entry.target.classList.add('visible')});
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+document.getElementById('contactForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const name=document.getElementById('name').value.trim();
+  alert(`Thank you${name ? ', '+name : ''}. Your enquiry has been captured. Connect this form to your email/CRM before launch.`);
+});
+</script>
+</body>
+</html>
